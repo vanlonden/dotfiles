@@ -1,0 +1,102 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+#
+# The top properties below are applied to every block, but can be overridden.
+# Each block command defaults to the script name to avoid boilerplate.
+command=/usr/lib/i3blocks/$BLOCK_NAME
+separator_block_width=20
+separator=true
+markup=none
+
+[mediaplayer]
+label=
+instance=spotify
+interval=5
+signal=10
+
+[volume]
+label=
+instance=Master
+interval=1
+signal=10
+
+[memory]
+label=
+interval=30
+
+#[memory]
+#label=SWAP
+#instance=swap
+#interval=30
+
+[disk]
+label=DISK
+instance=/
+interval=30
+
+[cpu_usage]
+label=CPU
+interval=1
+min_width=CPU:99.00%
+separator=false
+align=right
+
+[temperature]
+label=@ 
+interval=1
+align=left
+
+#[load_average]
+#interval=10
+
+[battery]
+label=
+interval=30
+
+
+[time]
+label=
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=1
+
+# Temperature
+#
+# Support multiple chips, though lm-sensors.
+# The script may be called with -w and -c switches to specify thresholds,
+# see the script for details.
+# Key indicators
+#
+# Add the following bindings to i3 config file:
+#
+# bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
+# bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
+#[keyindicator]
+#instance=CAPS
+#interval=once
+#signal=11
+
+#[keyindicator]
+#instance=NUM
+#interval=once
+#signal=11
