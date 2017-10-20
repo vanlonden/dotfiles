@@ -1,12 +1,12 @@
-rofi.fullscreen: true
-rofi.location: 1
-rofi.show:    run
-rofi.lines:   3
-rofi.bw:      0
-rofi.eh:      1.5
-rofi.padding: 20
-!rofi.font:    "pango: Roboto 18"
-rofi.color-window: #2f343f, #2f343f, #2f343f
-rofi.color-normal: #2f343f, #f3f4f5, #2f343f, #2f343f, #9575cd
-rofi.color-active: #2f343f, #f3f4f5, #2f343f, #2f343f, #9575cd
-rofi.color-urgent: #2f343f, #f3f4f5, #2f343f, #2f343f, #9575cd
+rofi.fullscreen:    true
+rofi.location:      1
+rofi.show:          run
+rofi.lines:         3
+rofi.bw:            0
+rofi.eh:            1.5
+rofi.padding:       20
+!rofi.font:         Source Code Pro Regular 18
+rofi.color-window:  #2f343f, #2f343f, #2f343f
+rofi.color-normal:  #2f343f, #f3f4f5, #2f343f, #2f343f, #9575cd
+rofi.color-active:  #2f343f, #f3f4f5, #2f343f, #2f343f, #9575cd
+rofi.color-urgent:  #2f343f, #f3f4f5, #2f343f, #2f343f, #9575cd
