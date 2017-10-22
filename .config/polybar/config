@@ -1,0 +1,297 @@
+[bar/bottom]
+
+override-redirect = false
+
+bottom = true
+
+fixed-center = true
+
+width = 100%
+height = 30
+
+offset-x = 0
+offset-y = 0
+
+background = #073642
+
+foreground = #839496
+
+radius = 0.0
+
+line-size = 1
+line-color = #073642
+
+
+
+module-margin = 4
+
+font-0 = Source Code Pro:size=10
+font-1 = FontAwesome:size=10
+
+modules-left = powermenu i3
+modules-center = date
+modules-right =
+
+separator = ||
+
+dim-value = 1.0
+
+wm-name =
+
+locale =
+
+tray-position = right
+
+tray-detached = true
+
+tray-maxsize = 28
+
+tray-transparent = false
+
+tray-background = ${root.background}
+
+tray-offset-x = 0
+tray-offset-y = 0
+
+tray-padding = 2
+
+tray-scale = 1.0
+
+wm-restack =
+
+enable-ipc = true
+
+click-left =
+click-middle =
+click-right =
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+double-click-left =
+double-click-middle =
+double-click-right =
+
+
+[bar/top]
+
+override-redirect = false
+
+bottom = false
+
+fixed-center = true
+
+width = 100%
+height = 30
+
+offset-x = 0
+offset-y = 0
+
+background = #073642
+
+foreground = #839496
+
+radius = 0.0
+
+line-size = 1
+line-color = #073642
+
+
+
+module-margin = 4
+
+font-1 = Source Code Pro:size=10
+font-2 = FontAwesome:size=10
+
+modules-left =cpu filesystem
+modules-center = xwindow
+modules-right =  memory text
+
+separator = ||
+
+dim-value = 1.0
+
+wm-name =
+
+locale =
+
+tray-position =
+
+tray-detached = true
+
+tray-maxsize = 28
+
+tray-transparent = false
+
+tray-background = ${root.background}
+
+tray-offset-x = 0
+tray-offset-y = 0
+
+tray-padding = 2
+
+tray-scale = 1.0
+
+wm-restack =
+
+enable-ipc = true
+
+click-left =
+click-middle =
+click-right =
+scroll-up =
+scroll-down =
+double-click-left =
+double-click-middle =
+double-click-right =
+
+
+[module/cpu]
+type = internal/cpu
+
+interval = 2
+
+format = <label> <ramp-coreload>
+
+label = CPU %percentage-cores%
+
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+
+
+[module/date]
+type = internal/date
+
+interval = 1.0
+
+date = %A, %m/%d/%Y
+
+time = %I:%M %P
+
+format = 🕓 <label>
+
+label = It is %time% on %date%
+
+
+[module/filesystem]
+type = internal/fs
+
+mount-0 = /home
+
+interval = 30
+
+fixed-values = false
+
+spacing = 2
+
+format-mounted = <label-mounted>
+
+format-unmounted = <label-unmounted>
+
+label-mounted = %mountpoint%: %used% / %total%
+
+label-unmounted = %mountpoint% unmounted.
+
+
+[module/i3]
+type = internal/i3
+
+pin-workspaces = true
+
+strip-wsnumbers = true
+
+index-sort = true
+
+enable-click = false
+
+enable-scroll = true
+
+wrapping-scroll = true
+
+reverse-scroll = true
+
+fuzzy-match = true
+
+format = <label-state> <label-mode>
+
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = #073642
+
+label-focused = %name%
+label-focused-foreground = #586e75
+label-focused-background = #073642
+label-focused-underline = #839496
+label-focused-padding = 4
+
+label-unfocused = %name%
+label-unfocused-padding = 4
+
+label-visible = %name%
+label-visible-foreground = #586e75
+label-visible-background = #073642
+label-visible-padding = 4
+
+label-urgent = %name%
+label-urgent-foreground = #f44336
+label-urgent-background = #073642
+label-urgent-underline = #f44336r
+label-urgent-padding = 4
+
+
+[module/memory]
+type = internal/memory
+
+interval = 1
+
+format = <label>
+
+label = %gb_free% RAM left
+
+
+[module/xwindow]
+type = internal/xwindow
+
+format-padding = 4
+
+label = %title%
+label-maxlen = 9999
+
+########
+# Text #
+########
+
+[module/text]
+
+type = custom/text
+content = Sound Mixer 🔊
+
+click-left = pavucontrol
+
+[module/powermenu]
+type = custom/menu
+
+format-padding = 5
+format-background = #002b36
+format-foreground = #839496
+
+label-open = Power Menu
+label-close = Cancel
+label-separator = " | "
+
+menu-0-0 = Logout
+menu-0-0-foreground = #b58900
+menu-0-0-exec = i3-msg exit
+menu-0-1 = Reboot
+menu-0-1-foreground = #dc322f
+menu-0-1-exec = reboot
+menu-0-2 = Poweroff
+menu-0-2-foreground = #586e75
+menu-0-2-exec = poweroff
+menu-0-3 = UEFI Setup
+menu-0-3-foreground =  #2aa198
+menu-0-3-exec = systemctl reboot --firmware-setup
