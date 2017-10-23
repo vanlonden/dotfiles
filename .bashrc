@@ -8,7 +8,7 @@ export VISUAL=nvim
 export USER_HOME=$HOME
 export JAVA_HOME=/usr/lib/jvm/java-9-jdk
 export JAVA_TOOL_OPTIONS=-Dfile.encoding="ISO-8859-1"
-export PATH="$PATH:$HOME/.local/opt/apache-karaf-4.0.5/bin:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/opt/apache-karaf-4.0.5/bin:$HOME/.local/bin:$HOME/.gem/bin"
 
 alias y="yaourt"
 alias v="vi"
