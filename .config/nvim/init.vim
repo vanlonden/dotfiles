@@ -37,16 +37,18 @@ let g:deoplete#enable_refresh_always=1
 let g:deoplete#sources#clang#libclang_path='/usr/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header='/usr/include/clang'
 let g:deoplete#sources#clang#sort_algo='priority'
-let g:deoplete#omni#functions={} 
-let g:deoplete#omni#functions.java='javacomplete@Complete'
+"let g:deoplete#omni#functions={} 
+"let g:deoplete#omni#functions.java='javacomplete@Complete'
 
-let g:JavaComplete_GradleExecutable='/usr/bin/gradle'
-let g:JavaComplete_EnableDefaultMappings=1 
-let g:JavaComplete_UsePython3=1
-"let g:JavaComplete_ShowExternalCommandsOutput=1
-let g:JavaComplete_LibsPath=''
-let g:JavaComplete_JavaviDebug=1
-let g:JavaComplete_JavaviLogFileDirectory='/home/vanlonden/.local/var/log/javavi'
+"let g:JavaComplete_GradleExecutable='/usr/bin/gradle'
+"let g:JavaComplete_EnableDefaultMappings=1 
+"let g:JavaComplete_LibsPath=''
+let g:JavaComplete_Home="/home/vanlonden/.local/share/nvim/plugged/vim-javacomplete2"
+
+let g:JavaComplete_JavaviLogfileDirectory = '/home/vanlonden/.local/var/log'
+let g:JavaComplete_JavaviDebug = 1
+
+
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'tpope/vim-fugitive'
