@@ -1,28 +1,25 @@
+[colors]
+background = #073642
+background-alt = #444
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
 [bar/bottom]
-
 override-redirect = false
-
 bottom = true
-
 fixed-center = true
-
 width = 100%
 height = 30
-
 offset-x = 0
 offset-y = 0
-
 background = #073642
-
 foreground = #839496
-
 radius = 0.0
-
 line-size = 1
 line-color = #073642
-
-
-
 module-margin = 4
 
 font-0 = Source Code Pro:size=12
@@ -33,32 +30,21 @@ modules-center = date
 modules-right =
 
 separator = ||
-
 dim-value = 1.0
-
 wm-name =
-
 locale =
 
 tray-position = right
-
 tray-detached = true
-
 tray-maxsize = 28
-
 tray-transparent = false
-
 tray-background = ${root.background}
-
 tray-offset-x = 0
 tray-offset-y = 0
-
 tray-padding = 2
-
 tray-scale = 1.0
 
 wm-restack =
-
 enable-ipc = true
 
 click-left =
@@ -70,68 +56,42 @@ double-click-left =
 double-click-middle =
 double-click-right =
 
-
 [bar/top]
-
 override-redirect = false
-
 bottom = false
-
 fixed-center = true
-
 width = 100%
 height = 30
-
 offset-x = 0
 offset-y = 0
-
 background = #073642
-
 foreground = #839496
-
 radius = 0.0
-
 line-size = 1
 line-color = #073642
 
-
-
 module-margin = 4
-
 font-0 = Source Code Pro:size=12
 font-1 = FontAwesome:size=12
 
 modules-left =cpu filesystem
 modules-center = xwindow
-modules-right =  memory text
+modules-right =  memory 
 
 separator = ||
-
 dim-value = 1.0
-
 wm-name =
-
 locale =
-
 tray-position =
-
 tray-detached = true
-
 tray-maxsize = 28
-
 tray-transparent = false
-
 tray-background = ${root.background}
-
 tray-offset-x = 0
 tray-offset-y = 0
-
 tray-padding = 2
-
 tray-scale = 1.0
-
 wm-restack =
-
 enable-ipc = true
 
 click-left =
@@ -143,16 +103,11 @@ double-click-left =
 double-click-middle =
 double-click-right =
 
-
 [module/cpu]
 type = internal/cpu
-
 interval = 2
-
 format = <label> <ramp-coreload>
-
 label = CPU %percentage-cores%
-
 ramp-coreload-0 = ▁
 ramp-coreload-1 = ▂
 ramp-coreload-2 = ▃
@@ -161,7 +116,6 @@ ramp-coreload-4 = ▅
 ramp-coreload-5 = ▆
 ramp-coreload-6 = ▇
 ramp-coreload-7 = █
-
 
 [module/date]
 type = internal/date
@@ -186,65 +140,44 @@ label-unmounted = %mountpoint% unmounted.
 
 [module/i3]
 type = internal/i3
-
 pin-workspaces = true
-
 strip-wsnumbers = true
-
 index-sort = true
-
 enable-click = false
-
 enable-scroll = true
-
 wrapping-scroll = true
-
 reverse-scroll = true
-
 fuzzy-match = true
-
 format = <label-state> <label-mode>
-
 label-mode = %mode%
 label-mode-padding = 2
 label-mode-background = #073642
-
 label-focused = %name%
 label-focused-foreground = #586e75
 label-focused-background = #073642
 label-focused-underline = #839496
 label-focused-padding = 4
-
 label-unfocused = %name%
 label-unfocused-padding = 4
-
 label-visible = %name%
 label-visible-foreground = #586e75
 label-visible-background = #073642
 label-visible-padding = 4
-
 label-urgent = %name%
 label-urgent-foreground = #f44336
 label-urgent-background = #073642
 label-urgent-underline = #f44336r
 label-urgent-padding = 4
 
-
 [module/memory]
 type = internal/memory
-
 interval = 1
-
 format = <label>
-
 label = %gb_free% RAM left
-
 
 [module/xwindow]
 type = internal/xwindow
-
 format-padding = 4
-
 label = %title%
 label-maxlen = 9999
 
@@ -252,24 +185,14 @@ label-maxlen = 9999
 # Text #
 ########
 
-[module/text]
-
-type = custom/text
-content = Sound Mixer 🔊
-
-click-left = pavucontrol
-
 [module/powermenu]
 type = custom/menu
-
 format-padding = 5
 format-background = #002b36
 format-foreground = #839496
-
 label-open = Power Menu
 label-close = Cancel
 label-separator = " | "
-
 menu-0-0 = Logout
 menu-0-0-foreground = #b58900
 menu-0-0-exec = i3-msg exit
@@ -282,3 +205,77 @@ menu-0-2-exec = poweroff
 menu-0-3 = UEFI Setup
 menu-0-3-foreground =  #2aa198
 menu-0-3-exec = systemctl reboot --firmware-setup
+
+[module/volume]
+type = internal/volume
+right-left = termite -e alsamixer
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = " "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = sound muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #ffb52a
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline = #f50a4d
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}

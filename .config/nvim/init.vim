@@ -12,6 +12,9 @@ set softtabstop=4
 noremap <F5> :set hlsearch! hlsearch?<CR>
 noremap <Leader>nt :NERDTreeToggle<CR>
 
+nnoremap <silent><A-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><A-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+
 colorscheme solarized
 set background=dark
 
@@ -34,6 +37,7 @@ let g:indent_guides_auto_colors=1
 let g:deoplete#enable_at_startup=1
 let g:deoplete#enable_camel_case=1
 let g:deoplete#enable_refresh_always=1
+
 let g:deoplete#sources#clang#libclang_path='/usr/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header='/usr/include/clang'
 let g:deoplete#sources#clang#sort_algo='priority'
@@ -44,7 +48,6 @@ let g:deoplete#sources#clang#sort_algo='priority'
 "let g:JavaComplete_EnableDefaultMappings=1 
 "let g:JavaComplete_LibsPath=''
 let g:JavaComplete_Home="/home/vanlonden/.local/share/nvim/plugged/vim-javacomplete2"
-
 let g:JavaComplete_JavaviLogfileDirectory = '/home/vanlonden/.local/var/log'
 let g:JavaComplete_JavaviDebug = 1
 

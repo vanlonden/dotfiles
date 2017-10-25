@@ -10,6 +10,9 @@ export PATH="$PATH:$HOME/.local/opt/apache-karaf-4.0.5/bin:$HOME/.local/bin:$HOM
 
 alias y="yaourt"
 alias v="nvim"
+alias vi="nvim"
+alias vim="nvim"
+
 
 alias ls="ls --color=auto"
 alias lsg="ls -l | grep "
