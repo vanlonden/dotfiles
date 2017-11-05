@@ -13,3 +13,5 @@ alias vim="nvim"
 alias y="yaourt"
 
 source ~/.config/zsh/zshrc.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

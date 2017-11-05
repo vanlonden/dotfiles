@@ -28,12 +28,6 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# alternatively, you can use the cursor keys:
-#bindsym $mod+Shift+Left move left
-#bindsym $mod+Shift+Down move down
-#bindsym $mod+Shift+Up move up
-#bindsym $mod+Shift+Right move right
-
 # split in horizontal orientation
 #bindsym $mod+h split h
 
@@ -122,14 +116,18 @@ mode "resize" {
 # resize mode
 bindsym $mod+r mode "resize"
 
-#source ~/.colors
+set $bg-colour              #2f343f 
+set $inactive-bg-colour     #2f343f
+set $text-colour            #f3f4f5
+set $inactive-text-colour   #878E7D
+set $urgent-bg-colour       #e06c75
+set $preview-colour         #2f343f
 
-set $bg-color 	         #073642
-set $inactive-bg-color   #073642
-set $text-color          #839496
-set $inactive-text-color #839496
-set $urgent-bg-color     #E53935
-set $highlight-color 	 #9575cd
+# Window colours
+client.focused                  $bg-colour          $bg-colour          $text-colour             $preview-colour
+client.unfocused                $inactive-bg-colour $inactive-bg-colour $inactive-text-colour    $preview-colour
+client.focused_inactive         $inactive-bg-colour $inactive-bg-colour $inactive-text-colour    $preview-colour
+client.urgent $urgent-bg-colour $urgent-bg-colour   $bg-colour          $text-colour             $preview-colour
 
 bindsym $mod+d exec "rofi -show run"
 
@@ -141,14 +139,9 @@ font "xft:Source Code Pro 12"
 
 # for_window [class=".*"] title_format <span size="smaller">  %title</span>
 #smart_gaps on
-#gaps inner 15
-#gaps outer 10
+gaps inner 5
+gaps outer 0
 
-# window colors         border              background         text                 indicator
-client.focused          $bg-color           $bg-color          $text-color          #00ff00
-client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
-client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
 
 # bar
 bar {
@@ -172,4 +165,4 @@ bindsym XF86AudioPrev exec playerctl previous
 
 new_window pixel 0
 
-#:exec_always "compton --inactive_opacity=0.8"
+exec_always "killall compton; compton -b"

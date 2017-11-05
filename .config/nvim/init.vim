@@ -1,106 +1,117 @@
 syntax enable
 
 set number
-"set clipboard+=unnamed
 set nocompatible
 
 set expandtab
 set shiftwidth=4
 set softtabstop=4
 
-" Press F4 to toggle highlighting on/off, and show current value.
-noremap <F5> :set hlsearch! hlsearch?<CR>
-noremap <Leader>nt :NERDTreeToggle<CR>
-
+" Inserting lines above and below current line
 nnoremap <silent><A-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
 nnoremap <silent><A-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
-colorscheme solarized
-set background=dark
+" Theme
+colorscheme solarized8_light_flat
+set termguicolors
 
 let g:diff_translations = 0
 
 call plug#begin('~/.local/share/nvim/plugged')
-
-Plug 'tpope/vim-fugitive'
-
-" Interface
-Plug 'vim-airline/vim-airline' 
-Plug 'vim-airline/vim-airline-themes'
-
-" Navigation
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'scrooloose/nerdtree'
-Plug 'kien/ctrlp.vim'
-
-" Gutter
-Plug 'myusuf3/numbers.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'nathanaelkane/vim-indent-guides'
-
-" Auto-completion
-Plug 'zchee/deoplete-clang' 
-Plug 'artur-shaik/vim-javacomplete2'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } 
-
-" Editing
-Plug 'terryma/vim-multiple-cursors'
-Plug 'honza/vim-snippets'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'sirver/ultisnips' 
-
-" Color themes
-Plug 'altercation/vim-colors-solarized'
-Plug 'tomasr/molokai'
-
+    Plug 'airblade/vim-gitgutter'
+    Plug 'altercation/vim-colors-solarized'
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
+    Plug 'majutsushi/tagbar'
+    Plug 'myusuf3/numbers.vim'
+    Plug 'octol/vim-cpp-enhanced-highlight'
+    Plug 'qpkorr/vim-renamer'
+    Plug 'rip-rip/clang_complete'
+    Plug 'scrooloose/nerdtree'
+    Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } 
+    Plug 'shougo/echodoc.vim'
+    Plug 'sirver/ultisnips' 
+    Plug 'tomtom/tcomment_vim'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-repeat'
+    Plug 'tpope/vim-surround'
+    Plug 'vim-airline/vim-airline' 
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'vim-syntastic/syntastic'
+    Plug 'xuyuanp/nerdtree-git-plugin'
 call plug#end()
 
-" "
-" UltiSnips
-" "
+" """"""""""""""""""
+" NERDTree         "
+" """"""""""""""""""
+noremap <Leader>nt :NERDTreeToggle<CR>
 
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
-let g:UltiSnipsExpandTrigger='<C-j>'
-let g:UltiSnipsJumpForwardTrigger='<C-j>'
-let g:UltiSnipsJumpBackwardTrigger='<C-k>'
+" """"""""""""""""""
+" FZF              "
+" """"""""""""""""""
+noremap <C-p> :FZF<CR> 
 
-" "
-" CtrlP
-" "
+" """"""""""""""""""
+" Tagbar           "
+" """"""""""""""""""
+noremap <Leader>tb :TagbarToggle<CR>
 
-let g:ctrlp_show_hidden=1
-let g:ctrlp_working_path_mode='wr'
-let g:ctrlp_user_command=['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" """"""""""""""""""
+" Syntastic    "
+" """"""""""""""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_sort_aggregated_errors=1
+let g:syntastic_aggregate_errors=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=0
+let g:syntastic_mode_map={}
+let g:syntastic_mode_map.active_filetypes = ['cpp', 'h']
+let g:syntastic_cpp_checkers=['gcc']
+let g:syntastic_cpp_check_header=1
+let g:syntastic_c_check_header=1
 
-"let g:ycm_always_populate_location_list=1
-"let g:ycm_use_ultisnips_completer=1
+" """"""""""""""""""
+" Echodoc     "
+" """"""""""""""""""
+set noshowmode
+let g:echodoc#enable_at_startup=1
+let g:echodoc#type='signature'
 
-" "
-" Indent Guide
-" "
-
-"let g:indent_guides_enable_on_vim_startup=1
-"let g:indent_guides_guide_size=4
-"let g:indent_guides_auto_colors=1
-
-" "
-" Deoplete
-" "
-
+" """"""""""""""""""
+" Deoplete         "
+" """"""""""""""""""
+set completeopt-=preview
+set completeopt+=noselect
 let g:deoplete#enable_at_startup=1
 let g:deoplete#enable_camel_case=1
-let g:deoplete#omni_patterns={}
-let g:deoplete#omni_patterns.java='[^. *\t]\.\w*'
+let g:deoplete#refresh_always=1
 let g:deoplete#sources={}
 let g:deoplete#sources._=[]
 let g:deoplete#file#enable_buffer_path=1
+let g:deoplete#max_list=20
+call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy', 'matcher_length'])
+call deoplete#custom#source('_', 'converters', ['converter_remove_paren'])
 
-""
-" Java Complete
-""
+" """"""""""""""""""
+" Clang Complete   "
+" """"""""""""""""""
+let g:clang_complete_auto = 0
+let g:clang_auto_select = 0
+let g:clang_omnicppcomplete_compliance = 0
+let g:clang_make_default_keymappings = 0
+let g:clang_use_library = 1
+let g:clang_library_path='/usr/lib/libclang.so'
+let g:clang_auto_user_options='compile_commands.json'
+let g:clang_complete_macros=1
+let g:clang_complete_patterns=1
 
-let g:JavaComplete_JavaviLogfileDirectory = '~/.local/var/log'
-let g:JavaComplete_EnableDefaultMappings=1 
-let g:JavaComplete_JavaviDebug = 1
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
+" """"""""""""""""""
+" UltiSnips        "
+" """"""""""""""""""
+let g:UltiSnipsExpandTrigger='<C-j>'
+let g:UltiSnipsJumpForwardTrigger='<C-j>'
+let g:UltiSnipsJumpBackwardTrigger='<C-k>'
+let g:UltiSnipsSnippetDirectories=[" UltiSnips", "mysnippets"]
